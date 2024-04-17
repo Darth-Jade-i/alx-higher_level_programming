@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""deletes all State objects with a name containing
-the letter a from the database hbtn_0e_6_usa"""
+"""prints all City objects
+from the database hbtn_0e_14_usa"""
 
 if __name__ == "__main__":
 
     import sys
     from model_state import Base, State
+    from model_city import City
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
     from sqlalchemy.schema import Table
@@ -16,7 +17,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
     session = Session(engine)
-    for state in session.query(State).filter(State.name.like('%a%')):
-        session.delete(state)
-    session.commit()
+    for state, city in session.query(State, City)\
+                              .filter(City.state_id == State.id)\
+                              .order_by(City.id).all():
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
     session.close()
