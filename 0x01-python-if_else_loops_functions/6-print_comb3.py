@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-for tens_digit in range(10):
-    for units_digit in range(10):
-        if tens_digit == 8 and units_digit == 9:
-            print("{}{}".format(tens_digit, units_digit))
-        elif tens_digit < units_digit and tens_digit != units_digit:
-            print("{}{}".format(tens_digit, units_digit), end=", ")
+for i in range(0, 90):
+    if i % 10 > i / 10:
+        if i != 89:
+            print("{:02d}, ".format(i), end='')
+        else:
+            print("{:02d}".format(i))

@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-"""prints the ASCII alphabet except q and e,
-    in lowercase, not followed by a new line."""
-for alphabet in range(97, 123):
-    if (alphabet != 101 and alphabet != 113):
-        print("{:c}".format(alphabet), end="")
+for i in range(97, 123):
+    if i != 101 and i != 113:
+        print("{}".format(chr(i)), end='')
